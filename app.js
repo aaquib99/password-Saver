@@ -3,7 +3,7 @@
 
 const cors = require("cors")
 const bodyParser = require('body-parser');
-const config = require("../password_saver/Config/config")
+const config = require("./Config/config")
 const logger = require("./logger/logger");
 const cluster = require("cluster");
 const { json } = require("body-parser");

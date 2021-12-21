@@ -9,11 +9,11 @@ const config = {
         password: process.env.HEROKU_DB_PASS || '',
         host: process.env.HEROKU_DB_HOST || '',
         port: 5000,
-        dialectOptions: {
-            ssl: true
-          }
+        // dialectOptions: {
+        //     ssl: true
+        //   }
         //url: process.env.HEROKU_DB_URL || '',
-       // ssl: { rejectUnauthorized: false },
+        //ssl: { rejectUnauthorized: false },
         //max: parseInt(process.env.DB_MAX_CLIENTS) || 20,
         //idleTimeoutMillis: parseInt(process.env.DB_IDLE_TIMEOUT_MS) || 30000
     }

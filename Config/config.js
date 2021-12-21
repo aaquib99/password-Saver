@@ -8,9 +8,9 @@ const config = {
         database: process.env.HEROKU_DB || '',
         password: process.env.HEROKU_DB_PASS || '',
         host: process.env.HEROKU_DB_HOST || '',
-        port: 7869
+        port: 7869,
         //url: process.env.HEROKU_DB_URL || '',
-        //ssl: { rejectUnauthorized: false },
+        ssl: { rejectUnauthorized: false },
         //max: parseInt(process.env.DB_MAX_CLIENTS) || 20,
         //idleTimeoutMillis: parseInt(process.env.DB_IDLE_TIMEOUT_MS) || 30000
     }

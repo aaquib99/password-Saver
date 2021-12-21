@@ -1,6 +1,6 @@
 const fetch = require("node-fetch")
 const logger  = require("../logger/logger")
-const url = 'http://localhost:5000/graphql'
+const url = 'http://https://onports.herokuapp.com/graphql'
 const projectData = require("../helper/type")
 const { loggers } = require("winston")
 const { error } = require("../logger/logger")

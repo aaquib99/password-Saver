@@ -1,1 +1,1 @@
-echo 'web: postgraphile -c $CONNECTION_STRING --5432 0.0.0.0 --port $PORT >> Procfile
+web:node app.js

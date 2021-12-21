@@ -3,7 +3,7 @@
 
 const cors = require("cors")
 const bodyParser = require('body-parser');
-const config = require("../password_saver/Config/config")
+const config = require("../OnportsWeb/Config/config")
 const logger = require("./logger/logger");
 const cluster = require("cluster");
 const { json } = require("body-parser");
@@ -11,7 +11,7 @@ let numberOfCpu = require('os').cpus().length
 const { graphqlHTTP } = require('express-graphql');
 
 
-console.log("OUTSIDE ",cluster)
+//console.log("OUTSIDE ",cluster)
 const PORT = config.port
 /**/
 if(numberOfCpu>6)

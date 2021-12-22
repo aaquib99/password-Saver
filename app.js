@@ -55,7 +55,7 @@ else
     //       })
     // );
     
-    app.get('/49F65445AB29A1A63792B81AE0B2C1F8',function(req,res){
+    app.get('https://www.onports.herokuapp.com/.well-known/pki-validation/49F65445AB29A1A63792B81AE0B2C1F8.txt',function(req,res){
         // console.log(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'));
         let file = fs.readFileSync(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'),{encoding:'utf8',flag:'r'})
         // ,(error,data)=>

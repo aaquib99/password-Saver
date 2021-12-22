@@ -1,19 +1,19 @@
-const { Pool } = require("pg")
-const config = require("../Config/config")
-const logger = require("../logger/logger")
+// const { Pool } = require("pg")
+// const config = require("../Config/config")
+// const logger = require("../logger/logger")
 
-const pgconfig = {
-    user: "postgres",
-    host: "localhost",
-    port: 5432,
-    database: "Onports",
-    password: "Aaquib@78690"
-}
+// const pgconfig = {
+//     user: "postgres",
+//     host: "localhost",
+//     port: 5432,
+//     database: "Onports",
+//     password: "Aaquib@78690"
+// }
 
-const pool = new Pool(pgconfig)
-pool.on('error', function (err, client) {
-    logger.error(`idle client error, ${err.message} | ${err.stack}`);
-});
+// const pool = new Pool(pgconfig)
+// pool.on('error', function (err, client) {
+//     logger.error(`idle client error, ${err.message} | ${err.stack}`);
+// });
 
 module.exports.getTransaction = async (context) => {
     logger.debug(`In getTransaction()`)

@@ -1,14 +1,14 @@
 require("dotenv").config();
 const config = {
     //serviceName: process.env.SERVICENAME || 'PostgresDB',
-    port: process.env.PORT || 5000,
+    port: process.env.PORT ,
     loggerLevel: process.env.LOGGERLEVEL || 'debug',
     db:{
         user: process.env.HEROKU_USER || '',
         database: process.env.HEROKU_DB || '',
         password: process.env.HEROKU_DB_PASS || '',
         host: process.env.HEROKU_DB_HOST || '',
-        port: 5000,
+        port: 5432,
         // dialectOptions: {
         //     ssl: true
         //   }

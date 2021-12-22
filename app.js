@@ -90,7 +90,7 @@ else
     
     app.use(
         postgraphile(
-          "postgres://axwikafflalctv:e684ff5a36af6df350aeff9bea383a28b0b7d193cf24b567a6cd48c2666ad26e@ec2-54-235-159-30.compute-1.amazonaws.com:5432/d12p7eins0esg8?ssl=false",
+          "postgres://postgres:Aaquib@78690@localhost:5432/Onports",
           "public",
           {
             watchPg: true,

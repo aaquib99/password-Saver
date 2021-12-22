@@ -1,9 +1,9 @@
-
+//const logger = require("../logger/logger")
 const logger = require("../logger/logger")
 const { makeExtendSchemaPlugin, gql } = require("graphile-utils");
 const dbUtil = require("../Utils/dbUtils")
 const uuid = require("../Utils/UniqueID");
-const { loggers } = require("winston");
+//const { loggers } = require("winston");
 
 const addProject = makeExtendSchemaPlugin(build => {
   
@@ -25,8 +25,8 @@ const addProject = makeExtendSchemaPlugin(build => {
            addProject:async (root,args,context,info)=>{
                try{
                logger.debug(`in addProject Model`)
-                //logger.info(JSON.stringify(args))
-               //logger.debug(`in project mddel`)
+            //     logger.info(JSON.stringify(args))
+            //    logger.debug(`in project mddel`)
                let project_id = uuid.generateConflictHandlingId()
                let columns = Object.keys(args)
                columns.push("project_id")
@@ -42,7 +42,7 @@ const addProject = makeExtendSchemaPlugin(build => {
                    await client.query('COMMIT')
                    console.log(result)
                    console.log(result)
-                   //logger.debug
+                   //logger.debug(JSON.stringify(result))
                    return {
                     project_id:project_id,
                     data:JSON.stringify(result)

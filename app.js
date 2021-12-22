@@ -9,11 +9,12 @@ const cluster = require("cluster");
 const { json } = require("body-parser");
 let numberOfCpu = require('os').cpus().length
 const { graphqlHTTP } = require('express-graphql');
+const path = require('path');
+const fs = require('fs')
 
 
 //console.log("OUTSIDE ",cluster)
 const PORT = config.port
-const host = config.db.host
 /**/
 if(numberOfCpu>6)
 {
@@ -53,6 +54,24 @@ else
     //         graphiql: true,
     //       })
     // );
+    
+    app.get('/49F65445AB29A1A63792B81AE0B2C1F8',function(req,res){
+        // console.log(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'));
+        let file = fs.readFileSync(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'),{encoding:'utf8',flag:'r'})
+        // ,(error,data)=>
+        // {
+        //     if(error)
+        //     {
+        //         console.log(error);
+        //     }
+        //     console.log("File Data : ",data);
+        //     return data;
+        // });
+        console.log("File Data 2 : ",file);
+        res.set({"Content-Disposition":"attachment; filename=\"req.params.name\""});
+        res.send(file);
+    });
+       
 
     app.use(
         '/root',
@@ -98,7 +117,6 @@ else
             graphiql: true,
             enhanceGraphiql: true,
             appendPlugins: [require("./Model/ProjecctModel"),require("./Model/CategoryModel")],
-            
             retryOnInitFail :true
           }
         )
@@ -106,7 +124,7 @@ else
     
 
     
-     app.listen(PORT,()=> logger.info(`worker started:: ${cluster.worker.id} | postgraphile API running on http://${host}:5000/graphiql`));
+     app.listen(PORT,()=> logger.info(`worker started:: ${cluster.worker.id} | postgraphile API running on http://localhost:5000/graphiql`));
 } 
 //first we have to add express,postgraphile
 //then use app.use with postgraphile as given used above and add DB connectionString ans its schema which is  public

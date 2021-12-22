@@ -8,7 +8,7 @@ const config = {
         database: process.env.HEROKU_DB || '',
         password: process.env.HEROKU_DB_PASS || '',
         host: process.env.HEROKU_DB_HOST || '',
-        port: 5432,
+        port: process.env.HEROKU_DB_PORT,
         // dialectOptions: {
         //     ssl: true
         //   }

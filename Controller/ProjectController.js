@@ -1,6 +1,6 @@
 const fetch = require("node-fetch")
 const logger  = require("../logger/logger")
-const url = 'postgres://axwikafflalctv:e684ff5a36af6df350aeff9bea383a28b0b7d193cf24b567a6cd48c2666ad26e@ec2-54-235-159-30.compute-1.amazonaws.com:5432/d12p7eins0esg8/graphql'
+const url = 'https://ec2-54-235-159-30.compute-1.amazonaws.com:5432/graphql'
 const projectData = require("../helper/type")
 const { loggers } = require("winston")
 const { error } = require("../logger/logger")

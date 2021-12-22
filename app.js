@@ -13,6 +13,7 @@ const { graphqlHTTP } = require('express-graphql');
 
 //console.log("OUTSIDE ",cluster)
 const PORT = config.port
+const host = config.db.host
 /**/
 if(numberOfCpu>6)
 {
@@ -105,7 +106,7 @@ else
     
 
     
-     app.listen(PORT,()=> logger.info(`worker started:: ${cluster.worker.id} | postgraphile API running on http://localhost:${PORT}/graphiql`));
+     app.listen(PORT,()=> logger.info(`worker started:: ${cluster.worker.id} | postgraphile API running on http://${host}:5000/graphiql`));
 } 
 //first we have to add express,postgraphile
 //then use app.use with postgraphile as given used above and add DB connectionString ans its schema which is  public

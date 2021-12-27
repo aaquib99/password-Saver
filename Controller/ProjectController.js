@@ -394,6 +394,7 @@ module.exports.getSomeDataOfAllProject = async(req,res)=>{
 module.exports.numberOfProject = async(req,res)=>{
     try
     {
+        logger.debug(`In function numberOfProject () `)
         graphqlQuery = `
         query {
             Project_aggregate {
@@ -446,13 +447,14 @@ module.exports.numberOfProject = async(req,res)=>{
     }
    
 }
-module.exports.getProjectById = (req,res)=>{
+module.exports.getProjectById = async(req,res)=>{
 try
 {
+    logger.debug(`In function numberOfProject () `)
     let id = req.body.project_id
-    let graphqlQuery  = `
-    {
-        Project(where: {project_id: {_eq: ""}}) {
+    logger.info(id)
+    let graphqlQuery  = `{
+        Project(where: {project_id: {_eq: "${id}"}}) {
           actual_delivery_duration
           category
           client_id
@@ -478,16 +480,17 @@ try
       }
       
     `
-    let result = fetch(url,{
+    logger.info(graphqlQuery)
+    let result = await fetch(url,{
         method:`POST`,
         headers:{
             'x-hasura-access-key': `33wSNttB156Yz3HvWR8IUScjOUyO3I63JZ3YdREXSQnqOW5ys070mk5uwePWyuaN`,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body:{
+        body:JSON.stringify({
             query:graphqlQuery
-        }
+        })
     }).then((res)=>res.json()).then((result)=>{
         return res.status(200).json({
             statusCode: 200,

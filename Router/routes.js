@@ -10,5 +10,6 @@ router.post("/updateProject",ProjectControllerObject.updateProject)
 router.post("/getAllProject",ProjectControllerObject.getAllProject)
 router.post("/getSomeDataOfAllProject",ProjectControllerObject.getSomeDataOfAllProject)
 router.post("/numberOfProject",ProjectControllerObject.numberOfProject)
+router.post("/getProjectById",ProjectControllerObject.getProjectById)
 module.exports = router
 

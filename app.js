@@ -55,9 +55,9 @@ else
     //       })
     // );
     
-    app.get('https://www.onports.herokuapp.com/.well-known/pki-validation/49F65445AB29A1A63792B81AE0B2C1F8.txt',function(req,res){
-        // console.log(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'));
-        let file = fs.readFileSync(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'),{encoding:'utf8',flag:'r'})
+    // app.get('https://www.onports.herokuapp.com/.well-known/pki-validation/49F65445AB29A1A63792B81AE0B2C1F8.txt',function(req,res){
+    //     // console.log(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'));
+    //     let file = fs.readFileSync(path.join(__dirname,'49F65445AB29A1A63792B81AE0B2C1F8.txt'),{encoding:'utf8',flag:'r'})
         // ,(error,data)=>
         // {
         //     if(error)
@@ -67,10 +67,10 @@ else
         //     console.log("File Data : ",data);
         //     return data;
         // });
-        console.log("File Data 2 : ",file);
-        res.set({"Content-Disposition":"attachment; filename=\"req.params.name\""});
-        res.send(file);
-    });
+    //     console.log("File Data 2 : ",file);
+    //     res.set({"Content-Disposition":"attachment; filename=\"req.params.name\""});
+    //     res.send(file);
+    // });
        
 
     app.use(
@@ -108,24 +108,25 @@ else
     // })
     
     
-    app.use(
-        postgraphile(
-          "postgres://postgres:Aaquib@78690@localhost:5432/Onports",
-          "public",
-          {
-            watchPg: true,
-            graphiql: true,
-            enhanceGraphiql: true,
-            appendPlugins: [require("./Model/ProjecctModel"),require("./Model/CategoryModel")],
-            retryOnInitFail :true
-          }
-        )
-      );
+    // app.use(
+    //     postgraphile(
+    //       "postgres://axwikafflalctv:e684ff5a36af6df350aeff9bea383a28b0b7d193cf24b567a6cd48c2666ad26e@ec2-54-235-159-30.compute-1.amazonaws.com:5432/d12p7eins0esg8?ssl=true",
+    //       "public",
+    //       {
+    //         watchPg: true,
+    //         graphiql: true,
+    //         enhanceGraphiql: true,
+    //         appendPlugins: [require("./Model/ProjecctModel"),require("./Model/CategoryModel")],
+    //         retryOnInitFail :true
+    //       }
+    //     )
+    //   );
     
 
     
      app.listen(PORT,()=> logger.info(`worker started:: ${cluster.worker.id} | postgraphile API running on http://localhost:5000/graphiql`));
 } 
+//POSTGRAPHILE
 //first we have to add express,postgraphile
 //then use app.use with postgraphile as given used above and add DB connectionString ans its schema which is  public
 // add  these to get req and give response in JSON form app.use(bodyParser.urlencoded({ extended: true })); app.use(bodyParser.json());
@@ -136,3 +137,12 @@ else
 //now in controller we will create a api for each API we created in Model in this controller api we will create the QUERY from data which comes from req than than with the help of
 //fetch API we will call them on url (http://localhost:5000/graphql) make sure than fetch api path should be /graphql not /graphiql
 ///graphiql paths help us to check our DB connectiveity and to test our Model api if model API is running fine then we will call it in controllr 
+
+//******************************************************************************************************************************************///
+//HASURA
+/************/
+ 
+//connect DB to HASURA
+//login in hasura->create project from hasura UI->Go on project dashboard->go on data and connect it to heroku (to connect DB ,DB must be deployed on heroku) ->then add connection String of Heroku DB 
+
+/************/

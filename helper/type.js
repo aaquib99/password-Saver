@@ -1,6 +1,6 @@
   const project = {
     "project_id":"String!",
-    "project_name":"String!",
+    "project_name":"String",
     "project_lead":"String",
     "client_id":"String",
     "started_at":"String",

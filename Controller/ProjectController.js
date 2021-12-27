@@ -220,7 +220,7 @@ module.exports.updateProject = async (req,res)=>{
             
                 return res.status(200).json({
                 statusCode: 200,
-                status: `successfull`,
+                status: successStatus,
                 message: "Work Done",
                 data:result,
                 
@@ -240,7 +240,7 @@ module.exports.updateProject = async (req,res)=>{
         logger.debug(`updateProject Controller error : ${error}`)
         return res.status(500).json({
             statusCode: 500,
-            status: `error`,
+            status: errorStatus,
             message: error.message,
             data:[]
         })
@@ -297,7 +297,7 @@ module.exports.getAllProject = async (req,res)=>{
           }).then((res)=>res.json()).then((result)=>{
             return res.status(200).json({
                 statusCode: 200,
-                status: `successfull`,
+                status: successStatus,
                 message: "Work Done",
                 data:result,
                 
@@ -317,7 +317,7 @@ module.exports.getAllProject = async (req,res)=>{
         logger.debug(`getAllProject Controller error : ${error}`)
         return res.status(500).json({
             statusCode: 500,
-            status: `error`,
+            status: errorStatus,
             message: error.message,
             data:[]
         })
@@ -363,7 +363,7 @@ module.exports.getSomeDataOfAllProject = async(req,res)=>{
           }).then((res)=>res.json()).then((result)=>{
             return res.status(200).json({
                 statusCode: 200,
-                status: `successfull`,
+                status: successStatus,
                 message: "Work Done",
                 data:result,
                 
@@ -383,7 +383,7 @@ module.exports.getSomeDataOfAllProject = async(req,res)=>{
         logger.debug(`getAllProject Controller error : ${error}`)
         return res.status(500).json({
             statusCode: 500,
-            status: `error`,
+            status: errorStatus,
             message: error.message,
             data:[]
         })
@@ -418,9 +418,9 @@ module.exports.numberOfProject = async(req,res)=>{
           }).then((res)=>res.json()).then((result)=>{
             return res.status(200).json({
                 statusCode: 200,
-                status: `successfull`,
+                status: successStatus,
                 message: "Work Done",
-                data:result,
+                data:result
                 
             })
           }).catch((error)=>{
@@ -438,11 +438,81 @@ module.exports.numberOfProject = async(req,res)=>{
         logger.debug(`getAllProject Controller error : ${error}`)
         return res.status(500).json({
             statusCode: 500,
-            status: `error`,
+            status: errorStatus,
             message: error.message,
             data:[]
         })
    
     }
    
+}
+module.exports.getProjectById = (req,res)=>{
+try
+{
+    let id = req.body.project_id
+    let graphqlQuery  = `
+    {
+        Project(where: {project_id: {_eq: ""}}) {
+          actual_delivery_duration
+          category
+          client_id
+          created_at
+          discription
+          ended_at
+          expected_delivery_duration
+          financial_id
+          future_scope
+          links
+          project_id
+          project_images
+          project_lead
+          project_name
+          review
+          services
+          started_at
+          status
+          team_id
+          technologies
+          updated_at
+        }
+      }
+      
+    `
+    let result = fetch(url,{
+        method:`POST`,
+        headers:{
+            'x-hasura-access-key': `33wSNttB156Yz3HvWR8IUScjOUyO3I63JZ3YdREXSQnqOW5ys070mk5uwePWyuaN`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body:{
+            query:graphqlQuery
+        }
+    }).then((res)=>res.json()).then((result)=>{
+        return res.status(200).json({
+            statusCode: 200,
+            status: successStatus,
+            message: "Work Done",
+            data:result
+    })
+    }).catch((error)=>{
+        return {
+            statusCode: 400,
+            status: errorStatus,
+            message: error.message,
+            data:[]
+        }
+    })
+}
+
+catch(error)
+{
+    logger.debug(`getProjectById Controller error : ${error}`)
+        return res.status(500).json({
+            statusCode: 500,
+            status: errorStatus,
+            message: error.message,
+            data:[]
+        }) 
+}
 }
